@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+<div class="slider">
+    <section>
+        <div class="center">
+            <img src="img/pro.png" width="200" alt="">
+            <h1>THREE.JS</h1>
+            <img src="img/logo_fac.svg" width="200" alt="">
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <video controls="controls">
+
+                <source src="video.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            </video>
+        </div>
+    </section>
+
+    <section>
+        <div class="center">
+            <h1>three.js</h1>
+            <p>библиотека JavaScript которая использует WebGL</p>
+            <br>
+
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>WebGL</h1>
+            <p>программная библиотека позволяющая создавать <br>
+                на JavaScript 3D-графику за счёт поддержки OpenGL.
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>Начало работы</h1>
+            <pre><code class="language-js">
+&#60;&#115;&#99;&#114;&#105;&#112;&#116;&#32;&#115;&#114;&#99;&#61;&#34;&#106;&#115;&#47;&#116;&#104;&#114;&#101;&#101;&#46;&#106;&#115;&#34;&#62;&#60;&#47;&#115;&#99;&#114;&#105;&#112;&#116;&#62;</code>
+            </pre>
+            <pre><code class="language-js">var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );</code></pre>
+            <pre><code class="language-js">var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );</code></pre>
+            <p>или</p>
+            <pre><code class="language-js">var canvas = document.getElementById('canvas');
+canvas.setAttribute('width',window.innerWidth);
+canvas.setAttribute('height',window.innerHeight);
+var renderer = new THREE.WebGLRenderer({canvas: canvas});
+            </code></pre>
+            <a href="https://threejs.org/">documentation</a>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>Камера</h1>
+            <pre><code class="language-js">
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+            </code></pre>
+            <img src="camera.png" alt="">
+        </div>
+    </section>
+
+    <section>
+        <div class="center">
+            <h1>Обновление окна</h1>
+            <pre><code class="language-js">renderer.setClearColor(0x000000, 1);
+renderer.render(scene, camera)</code></pre>
+            <a href="demo.html" target="_blank">demo</a>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>resize окна</h1>
+            <pre><code class="language-js">window.addEventListener('resize', function () {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});</code></pre>
+            <a href="demo2.html" target="_blank">demo</a>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>Цикл обновления (render)</h1>
+            <pre><code class="language-js">function render() {
+    requestAnimationFrame( render );
+    renderer.render( scene, camera );
+}
+render();</code></pre>
+            <a href="demo3.html" target="_blank">demo</a>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>Свет</h1>
+            <pre><code class="language-js">var light = new THREE.AmbientLight( 0xFFFFFF );
+scene.add( light );</code></pre>
+
+            <pre><code class="language-js">var spotLight = new THREE.SpotLight( 0xffffff );
+spotLight.position.set( 100, 1000, 100 );
+scene.add( spotLight );</code></pre>
+            <a href="https://threejs.org/examples/webgl_lights_spotlight.html" target="_blank">demo</a>
+        </div>
+
+
+    </section>
+
+    <section>
+        <div class="center">
+            <h1>dat.gui</h1>
+            <pre><code class="language-js">var gui = new dat.GUI();
+gui.add(cube.position, 'x').min(-2).max(2).step(0.25);
+gui.add(cube.position, 'y').min(-2).max(2).step(0.25);
+gui.add(camera.position, 'z').min(1).max(20).step(0.25);</code></pre>
+            <a href="http://workshop.chromeexperiments.com/examples/gui/#1--Basic-Usage" target="_blank">demo</a>
+
+            <h1>stats.js</h1>
+            <pre><code class="language-js">var stats = new Stats();
+stats.showPanel( 0 );
+document.body.appendChild( stats.dom );</code></pre>
+            <pre><code class="language-js">function render() {
+    requestAnimationFrame(render);
+    renderer.render(scene, camera);
+    stats.update();
+}</code></pre>
+            <a href="https://github.com/mrdoob/stats.js/" target="_blank">github</a>
+            <a href="demo4.html" target="_blank">demo</a>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>объекты (Mesh)</h1>
+
+            <pre><code class="language-js">var mesh = new THREE.Mesh( geometry, material );
+scene.add( mesh );
+mesh.position.set(X,Y,Z);
+mesh.position.x = 1;
+mesh.scale.x = 1;
+mesh.rotation.x = 1;</code></pre>
+
+            <a href="https://threejs.org/docs/index.html#Reference/Objects/Mesh" target="_blank">docs</a>
+            <a href="demo5.html" target="_blank">demo</a>
+        </div>
+
+
+    </section>
+    <section>
+        <div class="center">
+            <h1>Геометрия (Geometries)</h1>
+            <pre><code class="language-js">var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var geometry = new THREE.SphereGeometry( 5, 32, 32 );</code></pre>
+            <a href="https://threejs.org/docs/index.html#Reference/Geometries/BoxBufferGeometry"
+               target="_blank">demo</a>
+            <h1>OBJLoader.js</h1>
+
+            <pre><code class="language-js">var loader = new THREE.OBJLoader( manager );
+loader.load( 'cube.obj', function ( object ) {
+    object.traverse( function ( child ) {
+        if ( child instanceof THREE.Mesh ) {
+            child.material.map = texture;
+        }
+    });
+    object.position.y = - 95;
+    scene.add( object );
+}, onProgress, onError );</code></pre>
+            <a href="https://threejs.org/examples/webgl_loader_obj.html"
+               target="_blank">demo</a>
+
+
+        </div>
+
+
+    </section>
+    <section>
+        <div class="center">
+            <h1>Текстуры (Materials)</h1>
+            <pre><code class="language-js">var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+var material = new THREE.MeshPhongMaterial({color: 0x00ff00});
+var image = new THREE.TextureLoader().load('textures/img.jpg');
+var material = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    transparent: true,
+    map: image,
+    opacity: 0.4,
+    roughness: 0.5,
+    metalness: 1,
+    side: THREE.DoubleSide
+});</code></pre>
+            <a href="https://threejs.org/docs/index.html#Reference/Materials/MeshPhongMaterial"
+               target="_blank">demo</a>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>Зеркало</h1>
+            <pre><code class="language-js">var mirrorCamera = new THREE.CubeCamera( 1, 100000, 128 );
+mirrorCamera.position.set(0, 0, 170);
+mirrorCamera.scale.set(1, 1, -1);
+scene.add(mirrorCamera);</code></pre>
+
+            <pre><code class="language-js">var materialSphere = new THREE.MeshPhongMaterial({
+    envMap: mirrorCamera.renderTarget.texture
+})</code></pre>
+
+            <pre><code class="language-js">mirrorCamera.setVisible( false );
+// render
+mirrorCamera.setVisible( true );</code></pre>
+            <a href="https://threejs.org/examples/webgl_materials_cubemap_dynamic2.html" target="_blank">demo</a>
+            <a href="web/index2.html" target="_blank">demo2</a>
+        </div>
+    </section>
+    <section>
+        <div class="center">
+            <h1>Спасибо!</h1>
+            <p>Войдевич Богдан</p>
+            <a href="mailto:bv@facility.team">bv@facility.team</a>
+        </div>
+    </section>
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="prism.js"></script>
+<script>
+    $('.slider').slick({
+        draggable: false
+    });
+</script>
+
+
+</body>
+</html>

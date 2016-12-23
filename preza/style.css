@@ -1,0 +1,150 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    outline: none;
+    border-radius: 0;
+
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+a:hover, a:active {
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.slider {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    font-size: 18px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.slick-arrow {
+    visibility: hidden;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: bold;
+    margin: 20px;
+    text-transform: uppercase;
+}
+
+p {
+    line-height: 24px;
+}
+
+video {
+    height: 90%;
+}
+
+pre {
+    width: 50%;
+    margin: 20px auto !important;
+    padding: 20px !important;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+a {
+    display: block;
+    margin-top: 10px;
+    color: #ccc;
+}

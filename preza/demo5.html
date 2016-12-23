@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+<script src="js/dat.gui.min.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/three.js"></script>
+<script>
+
+    var stats = new Stats();
+    stats.showPanel(0);
+    document.body.appendChild(stats.dom);
+
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+
+    renderer.setClearColor(0x000000, 1);
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+    var cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+
+    var cube2 = new THREE.Mesh(geometry, material);
+    scene.add(cube2);
+
+    camera.position.z = 2;
+
+
+    cube2.position.set(2,1,1);
+
+
+    var light = new THREE.AmbientLight(0x404040); // soft white light
+    scene.add(light);
+
+
+    var gui = new dat.GUI();
+    gui.add(cube.position, 'x').min(-2).max(2).step(0.25);
+    gui.add(cube.position, 'y').min(-2).max(2).step(0.25);
+    gui.add(cube.scale, 'y').min(-2).max(2).step(0.25);
+    gui.add(cube.rotation, 'y').min(-2).max(2).step(0.25);
+    gui.add(camera.position, 'z').min(1).max(20).step(0.25);
+
+
+
+    render();
+
+    function render() {
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+        stats.update();
+    }
+
+    window.addEventListener('resize', function () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+</body>
+</html>
