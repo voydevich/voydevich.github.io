@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('static/js/separate-js/service-worker.js', {scope: './'}).then(function(registration) {
+    navigator.serviceWorker.register('/service-worker.js', {scope: './'}).then(function(registration) {
         document.querySelector('#status').textContent = 'succeeded';
     }).catch(function(error) {
         document.querySelector('#status').textContent = error;
