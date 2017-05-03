@@ -11,3 +11,4 @@ if ('serviceWorker' in navigator) {
     aElement.textContent = 'unavailable';
     document.querySelector('#status').appendChild(aElement);
 }
+console.log(1)
